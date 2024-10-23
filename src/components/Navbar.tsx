@@ -30,7 +30,7 @@ export const Navbar = () => {
           <a href="#" className="hover:text-opacity-100 text-white text-opacity-60 transition">Careers</a>
           <a href="#" className="hover:text-opacity-100 text-white text-opacity-60 transition">Blogs</a>
           <a href="#" className="hover:text-opacity-100 text-white text-opacity-60 transition">Cutomers</a>
-          <button className='bg-white px-[15px] py-[10px] rounded-[10px] text-black'>Get for free</button>
+          <button className='bg-white px-3 py-2.5 rounded-[10px] text-black'>Get for free</button>
         </nav>
         </div>
 
