@@ -22,5 +22,11 @@ const items = [
 ];
 
 export const FAQs = () => {
-  return null;
+  return (
+    <section className="py-24 text-center bg-[linear-gradient(to_bottom,#5D2CA8,#000)] text-white">
+      <div className="container">
+        <h1 className="text-3xl">Frequently asked questions</h1>
+      </div>
+    </section>
+  );
 };
