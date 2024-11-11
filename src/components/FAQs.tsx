@@ -59,7 +59,7 @@ export const FAQs = () => {
 
         <div>
           {items.map(({ question, answer }) => (
-            <AccordiantItem question={question} answer={answer}/>
+            <AccordiantItem question={question} answer={answer} key={question}/>
           ))}
         </div>
       </div>
