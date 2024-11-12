@@ -4,10 +4,11 @@ import nuts from "@/assets/images/helix2.png";
 
 export const CallToAction = () => {
   return (
+    //overflow-hiidden main parent div te
     <section className="bg-black text-white py-[72px] text-center overflow-hidden">
       <div className="container">
         <div className="mb-10">
-          <div className="relative">
+          <div className="relative z-10">
             <h1 className="text-4xl font-semibold mb-5 md:text-5xl xl:text-6xl">
               Get instant access
             </h1>
@@ -17,6 +18,14 @@ export const CallToAction = () => {
               width={200}
               height={200}
               className="absolute -top-16 -left-24 hidden md:inline-flex xl:w-[263px] xl:h-[263px]"
+            />
+
+            <Image
+              src={stats}
+              alt="bigGoofyaimge"
+              width={120}
+              height={120}
+              className="absolute -top-16 -z-10 -left-20 sm:hidden md:hidden  xl:w-[263px] xl:h-[263px]"
             />
 
             <Image

@@ -21,8 +21,8 @@ export const Hero = () => {
           </a>
         </div>
         <div className="relative inline-flex mt-8">
-          <h1 className="tracking-tighter text-white font-bold text-7xl items-center inline-flex md:text-9xl z-10 md:z-0">
-            One task <br /> a time
+          <h1 className="tracking-tighter text-white font-semibold text-5xl items-center inline-flex md:text-7xl xl:text-8xl z-10 md:z-0">
+            Do Something <br /> Uncomfortable
           </h1>
           <Image
             src={cursorImage}

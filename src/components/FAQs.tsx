@@ -37,7 +37,7 @@ const AccordiantItem = ({
   const [isOpen,setIsOpen]=useState(false)
   return (
     // use mx-auto when playg with w-[675px] or max-width to center it
-    <div className="py-8 border-b border-white/30 transition duration-300  md:w-[675px] mx-auto xl:w-[760px] " key={question}
+    <div className="py-8 border-b border-white/30 transition duration-300  md:w-[675px] mx-auto xl:w-[760px] cursor-pointer" key={question}
     onClick={()=>setIsOpen(!isOpen)}
     >
       <div className="flex md:font-semibold">
