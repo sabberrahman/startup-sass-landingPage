@@ -1,4 +1,6 @@
+"use client";
 import Logo from "@/assets/icons/ecosystem.svg";
+import React, { useState } from "react";
 
 const features = [
   {
@@ -33,23 +35,70 @@ export const Features = () => {
             and quickly.
           </p>
         </div>
-
         <div className="md:px-[180px] lg:flex lg:px-0 lg:gap-2">
           {features.map(({ title, description }) => (
-            <div
-              key={title}
-              className="border border-white/20 mb-4 px-10 py-10 rounded-[10px] bg-[#0D0D0D] flex-1"
-            >
-              <div className=" p-2   inline-flex  bg-white/90 text-black rounded-md mb-4">
-                <Logo className="w-9 h-9 px-2 py-2" />
-              </div>
+            <CardEffect key={title}>
+              <div
+                key={title}
+                className="border border-white/20 mb-4 md:mb-0 px-10 py-10 rounded-[10px] bg-[#0D0D0D] flex-1"
+              >
+                <div className=" p-2   inline-flex  bg-white/90 text-black rounded-md mb-4">
+                  <Logo className="w-9 h-9 px-2 py-2" />
+                </div>
 
-              <h1 className="text-lg font-semibold mb-2 ">{title}</h1>
-              <p className="text-md md:w-80 text-center text-[#ffffff]/90 lg:w-auto">{description}</p>
-            </div>
+                <h1 className="text-lg font-semibold mb-2 ">{title}</h1>
+                <p className="text-md md:w-80 text-center text-[#ffffff]/90 lg:w-auto">
+                  {description}
+                </p>
+              </div>
+            </CardEffect>
           ))}
-        </div>
+        </div>{" "}
       </div>
     </section>
+  );
+};
+
+const CardEffect = ({ children }: { children: React.ReactNode }) => {
+  const [isHover, setIsHover] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMov = (e: React.MouseEvent) => {
+    const position = e.currentTarget.getBoundingClientRect();
+    console.log(position);
+    setMousePosition({
+      x: e.clientX - position.left,
+      y: e.clientY - position.top,
+    });
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden bg-[#000] flex-1 rounded-xl p-0 m-0 transition"
+      onMouseMove={handleMouseMov}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      style={{
+        willChange: "transform",
+      }}
+    >
+      {isHover && (
+        <div
+          className="absolute rounded-full"
+          style={{
+            width: "280px",
+            height: "280px",
+            background: "#5D2CAB",
+            filter: "blur(100px)",
+            top: mousePosition.y - 150,
+            left: mousePosition.x - 150,
+            transform: "translate(-0%, -0%)",
+            zIndex: 10,
+            willChange: "transform, top, left",
+          }}
+        />
+      )}
+      {children}
+    </div>
   );
 };

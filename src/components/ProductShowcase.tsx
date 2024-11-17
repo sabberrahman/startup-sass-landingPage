@@ -17,7 +17,7 @@ export const ProductShowcase = () => {
     <section className="text-center py-20 bg-[linear-gradient(to_bottom,#000,#5D2CA8)] bg-black text-white">
       <div className="container">
         <div>
-          <h1 className="text-3xl mb-5 lg:text-5xl">Intuitive interface</h1>
+          <h1 className="text-3xl mb-5 lg:text-5xl font-semibold">Intuitive interface</h1>
           <div className="flex justify-center">
             <p className="text-lg text-white/80 md:w-[535px] lg:text-xl lg:w-[580px]">
               Celebrate the joy of accomplishment with an app designed to track
