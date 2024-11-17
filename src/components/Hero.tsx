@@ -1,7 +1,9 @@
+"use client";
 import ArrowIcon from "@/assets/icons/arrow-w.svg";
 import Image from "next/image";
 import cursorImage from "@/assets/images/cursor.png";
 import msgImage from "@/assets/images/message.png";
+import { motion } from "framer-motion";
 export const Hero = () => {
   return (
     <div className="text-center bg-black text-white bg-[linear-gradient(to_bottom,#000,#200D42,#4F21A1,#A46EDB)] py-[76px] md:py-[92px] relative overflow-clip">
@@ -24,12 +26,21 @@ export const Hero = () => {
           <h1 className="tracking-tighter text-white font-semibold text-5xl items-center inline-flex md:text-7xl xl:text-8xl z-10 md:z-0">
             Do Something <br /> Uncomfortable
           </h1>
-          <Image
-            src={cursorImage}
-            alt="cursor image"
+          <motion.div
             className="absolute top-[120px] -left-40 hidden sm:inline-flex"
-          />
-          <Image src={msgImage} alt="cursor image" className="absolute -right-[180px] bottom-0  " />
+            drag
+            dragSnapToOrigin
+          >
+            <Image src={cursorImage} alt="cursor image" draggable="false" />
+          </motion.div>
+
+          <motion.div
+            className="absolute -right-[180px] bottom-0  "
+            drag
+            dragSnapToOrigin
+          >
+            <Image src={msgImage} alt="cursor image" draggable="false"/>
+          </motion.div>
         </div>
         <p className="mt-8 text-xl  text-white/60 text-center w-80 md:w-[456px] mx-auto">
           Celebrate the joy of accomplishment with an app designed to track your

@@ -3,6 +3,7 @@ import Plus from "@/assets/icons/plus.svg";
 import Minus from "@/assets/icons/minus.svg";
 import { useState } from "react";
 import clsx from "clsx";
+import { AnimatePresence, motion } from "framer-motion";
 
 const items = [
   {
@@ -34,19 +35,34 @@ const AccordiantItem = ({
   question: string;
   answer: string;
 }) => {
-  const [isOpen,setIsOpen]=useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   return (
     // use mx-auto when playg with w-[675px] or max-width to center it
-    <div className="py-8 border-b border-white/30 transition duration-300  md:w-[675px] mx-auto xl:w-[760px] cursor-pointer" key={question}
-    onClick={()=>setIsOpen(!isOpen)}
+    <div
+      className="py-8 border-b border-white/30 transition duration-300  md:w-[675px] mx-auto xl:w-[760px] cursor-pointer"
+      key={question}
+      onClick={() => setIsOpen(!isOpen)}
     >
       <div className="flex md:font-semibold">
         {" "}
         <span className="flex-1 text-start text-xl">{question}</span>
-        {isOpen?<Minus className="w-6 h-6"/>:<Plus className="w-6 h-6"/>}
-       
+        {isOpen ? <Minus className="w-6 h-6" /> : <Plus className="w-6 h-6" />}
       </div>
-      <div className={clsx({"hidden":!isOpen},"mt-4 md:w-[500px] text-start text-white/80 text-lg")}>{answer}</div>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className={clsx(
+              "mt-4 md:w-[500px] text-start text-white/80 text-lg transition"
+            )}
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: "auto", marginTop: "16px" }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+          >
+            {answer}
+          </motion.div>
+        )}{" "}
+      </AnimatePresence>
     </div>
   );
 };
@@ -55,11 +71,17 @@ export const FAQs = () => {
   return (
     <section className="py-24 text-center bg-[linear-gradient(to_bottom,#5D2CA8,#000)] text-white">
       <div className="container">
-        <h1 className="text-[32px] font-semibold md:text-5xl mb-4 md:mb-12 xl:mb-12 xl:text-[50px] ">Frequently asked questions</h1>
+        <h1 className="text-[32px] font-semibold md:text-5xl mb-4 md:mb-12 xl:mb-12 xl:text-[50px] ">
+          Frequently asked questions
+        </h1>
 
         <div>
           {items.map(({ question, answer }) => (
-            <AccordiantItem question={question} answer={answer} key={question}/>
+            <AccordiantItem
+              question={question}
+              answer={answer}
+              key={question}
+            />
           ))}
         </div>
       </div>
